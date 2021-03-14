@@ -393,11 +393,8 @@ class events(commands.Cog):
             channel = self.bot.get_channel(payload.channel_id)
             try:
                 message = await channel.fetch_message(payload.message.id)
-                if message:
-                    if message.embeds != []:
-                        return
-                        await self.bot.process_commands(message)
-
+                if message and message.embeds != []:
+                    return
             except:
                 pass
     @staticmethod

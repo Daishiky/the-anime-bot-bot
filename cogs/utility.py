@@ -647,10 +647,12 @@ class utility(commands.Cog):
             "safe": "off"  if ctx.channel.is_nsfw() else "active"
         }
         async with self.bot.session.get(f"https://www.googleapis.com/customsearch/v1", params=params) as resp:
-            results = []
             js = await resp.json()
-            for i in js["items"]:
-                results.append(f"{i['title']}\n{i['link']}\n{i.get('snippet', 'No description')}\n")
+            results = [
+                f"{i['title']}\n{i['link']}\n{i.get('snippet', 'No description')}\n"
+                for i in js["items"]
+            ]
+
         paginator = commands.Paginator(prefix="", suffix="", max_size=2000)
         embed = discord.Embed(color=self.bot.color)
         for i in results:
