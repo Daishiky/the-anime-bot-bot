@@ -255,10 +255,10 @@ class others(commands.Cog):
         postgres = round(postgres*1000)
         embed = await embedbase.embed(self, ctx)
         embed.set_author(name="ping")
-        embed.add_field(name="<:stab:744345955637395586> Websocket Latency",
+        embed.add_field(name="<:stab:744345955637395586>  websocket latency",
                         value=f"```{round(self.bot.latency * 1000)} ms ```")
-        embed.add_field(name="<:postgres:821095695746203689> Postgres Latency", value=f"```{postgres} ms```")
-        embed.add_field(name="<a:typing:597589448607399949> API Latency",
+        embed.add_field(name="<:postgres:821095695746203689> Postgre sql latency", value=f"```{postgres} ms```")
+        embed.add_field(name="<a:typing:597589448607399949> API latency",
                         value=f"```{round(final_latency * 1000)} ms ```")
         # start1 = time.perf_counter()
         # await self.bot.db.fetch("SELECT * FROM prefixes LIMIT 1")
@@ -287,7 +287,7 @@ class others(commands.Cog):
         m = self.bot.psutil_process.memory_full_info()
         embed = await embedbase.embed(self, ctx)
         embed.add_field(
-            name="System Info",
+            name="System Infos",
             value=f"• `{humanize.naturalsize(m.rss)}` physical memory used\n",
             inline=False)
         await ctx.reply(embed=embed)
@@ -449,16 +449,16 @@ class others(commands.Cog):
         embed = await embedbase.embed(self, ctx)
         embed.set_author(name=self.bot.user, icon_url=self.bot.user.avatar_url)
         embed.add_field(
-            name="Info",
-            value=f"Guilds: {len(self.bot.guilds)} \nMembers: {len(self.bot.users)} \nCreator: {owner} \nLibrary: discord.py \nCommands used (since last reboot): {self.bot.counter} \nInvite link: [click here](https://discord.com/api/oauth2/authorize?client_id=787927476177076234&permissions=2146823543&scope=bot) \nMessages Cached: {len(self.bot.cached_messages)}",
+            name="infos",
+            value=f"Guilds: {len(self.bot.guilds)}\nMembers: {len(self.bot.users)}\nDeveloper: {owner}\nLibrary: discord.py\nCommands used (since last reboot): {self.bot.counter} \nInvite link: [click](https://discord.com/api/oauth2/authorize?client_id=787927476177076234&permissions=2146823543&scope=bot)\nMessages Cached: {len(self.bot.cached_messages)}",
             inline=False)
         embed.add_field(
             name="System Info",
             value=f"> `{humanize.naturalsize(m.rss)}` physical memory used\n> `{self.bot.psutil_process.cpu_percent()/psutil.cpu_count()}%` CPU usage\n> running on PID `{self.bot.psutil_process.pid}`\n> `{self.bot.psutil_process.num_threads()}` thread(s)",
             inline=False)
-        embed.add_field(name="<:stab:744345955637395586>  Websocket Latency",
+        embed.add_field(name="<:stab:744345955637395586> Websocket latency",
                         value=f"```{round(self.bot.latency * 1000)} ms ```")
-        embed.add_field(name="<a:typing:597589448607399949> API Latency",
+        embed.add_field(name="<a:typing:597589448607399949> API latency",
                         value=f"```{round(final_latency * 1000)} ms ```")
         # repo = g.get_repo("Cryptex-github/the-anime-bot-bot").get_commits()[:3]
         # lists = []
@@ -468,11 +468,11 @@ class others(commands.Cog):
         # embed.add_field(name="Recent changes",
         #                 value="\n".join(lists), inline=False)
         embed.add_field(
-            name="File Stuff",
-            value=f"```file: {fc:,}\nline: {ls:,}\ncharacters: {cc:,} \nclass: {cl:,}\nfunction: {fn:,}\ncoroutine: {cr:,}\ncomment: {cm:,}```",
+            name=" stats ",
+            value=f"```file: {fc:,}\nline: {ls:,}\ncharacters: {cc:,}\nclass: {cl:,}\nfunction: {fn:,}\ncoroutine: {cr:,}\ncomment: {cm:,}```",
             inline=False)
         embed.set_footer(
-            text=f"requested by {ctx.author} response time : {round(self.bot.latency * 1000)} ms",
+            text=f"Requested by {ctx.author} response time : {round(self.bot.latency * 1000)} ms",
             icon_url=ctx.author.avatar_url)
         await ctx.reply(embed=embed)
 
@@ -483,7 +483,7 @@ class others(commands.Cog):
         embed = await embedbase.embed(self, ctx)
         embed.add_field(name="policy", value=policy)
         embed.set_footer(
-            text=f"requested by {ctx.author} response time : {round(self.bot.latency * 1000)} ms",
+            text=f"Requested by {ctx.author} | Response time: {round(self.bot.latency * 1000)} ms",
             icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
 
