@@ -320,8 +320,8 @@ class others(commands.Cog):
         if your prefix contain space:
         ovo prefix remove "prefixname "
         """
-        if not prefix_to_remove in self.bot.prefixes[ctx.guild.id]:
-          return await ctx.send("This prefix don't exist maybe you made a typo? Case and space Sensitive")
+        if prefix_to_remove not in self.bot.prefixes[ctx.guild.id]:
+            return await ctx.send("This prefix don't exist maybe you made a typo? Case and space Sensitive")
         old_prefixes = await self.bot.db.fetchrow("SELECT * FROM prefix WHERE guild_id=$1", ctx.guild.id)
         old_prefixes = old_prefixes["prefix"]
         new_prefixes = old_prefixes
