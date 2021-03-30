@@ -18,9 +18,7 @@ class HelpCommand(commands.HelpCommand):
         return f"{self.clean_prefix}{command.qualified_name} {command.signature}"
 
     async def send_group_help(self, group):
-        lists = []
-        for i in group.walk_commands():
-            lists.append(self.get_command_signature(i))
+        lists = [self.get_command_signature(i) for i in group.walk_commands()]
         pages = menus.MenuPages(source=HelpMenuSource(lists), delete_message_after=True)
         await pages.start(self.context)
 
@@ -30,7 +28,6 @@ class HelpCommand(commands.HelpCommand):
         await self.context.send(embed=embed)
 
     async def send_cog_help(self, cog):
-        lists = []
         commands_ = cog.get_commands()
         lists_ = []
         for i in commands_:
@@ -39,8 +36,7 @@ class HelpCommand(commands.HelpCommand):
                     lists_.append(self.get_command_signature(v))
             else:
                 lists_.append(self.get_command_signature(i))
-        for i in lists_:
-            lists.append(f"**{i}**")
+        lists = [f"**{i}**" for i in lists_]
         pages = menus.MenuPages(source=HelpMenuSource(lists), delete_message_after=True)
         await pages.start(self.context)
 
