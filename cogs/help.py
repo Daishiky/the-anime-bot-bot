@@ -57,22 +57,21 @@ class HelpCommand(commands.HelpCommand):
 
         **Available Modules are:**
         ```
-        fun
-        utility
-        moderations
-        chat
-        owners
-        Music
-        others
-        animes
-        todo
-        tag
-        commandsusage
-        events
-        pictures
-        logging
-        socket
-        
+fun
+utility
+moderations
+chat
+owners
+Music
+others
+animes
+todo
+tag
+commandsusage
+events
+pictures
+logging
+socket
         ```
         """)
         embed.set_thumbnail(url=str(self.context.me.avatar_url_as(format="png")))
