@@ -191,6 +191,11 @@ class fun(commands.Cog):
                 return await ctx.send("we can't find fact about that animal")
             fact = await resp.json()
             await ctx.send(fact["fact"])
+                         
+    @commands.command()
+    async def hi(self, ctx):
+        await ctx.send("H")
+            
 
     @commands.command()
     async def http(self, ctx: AnimeContext, *, code: str = "404"):
